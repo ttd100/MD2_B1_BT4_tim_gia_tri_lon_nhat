@@ -3,32 +3,32 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int choice;
-        do {
-            System.out.println("Menu:");
-            System.out.println("1. Fahrenheit to Celsius");
-            System.out.println("2. Celsius to Fahrenheit");
-            System.out.println("0. Exit");
-            choice = sc.nextInt();
-            switch (choice) {
-                case 1:
-                    System.out.println("Enter the temperature:");
-                    double f = sc.nextInt();
-                    double c = 5.0 / 9 * (f - 32);
-                    System.out.println("Fahrenheit to Celsius: " + c);
-                    break;
-                case 2:
-                    System.out.println("Enter the temperature:");
-                    double c1 = sc.nextInt();
-                    double f1 = 9.0 / 5 * c1 + 32;
-                    System.out.println("Celsius to Fahrenheit: " + f1);
-                    break;
-                case 0:
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Invalid choice");
+        System.out.println("Enter sizes of matrix:");
+        System.out.print("Rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Columns: ");
+        int cols = sc.nextInt();
+
+        int[][] matrix = new int[rows][cols];
+
+        int max = 0;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.println("Enter value at position (" + i + ", " + j + ")");
+                matrix[i][j] = sc.nextInt();
+                if (i == j && j == 0) max = matrix[i][j];
+                if (matrix[i][j] > max) max = matrix[i][j];
             }
-        } while (choice != 0);
+        }
+
+        System.out.println("2D-Array:");
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + "  ");
+            }
+            System.out.println();
+        }
+        System.out.println("Max = " + max);
     }
 }
